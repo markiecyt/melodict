@@ -10,19 +10,15 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
+      <ul class="navbar-nav me-auto align-items-center">
+        <%= link_to "Exercises", "/exercises", class: "navbar-brand text-white fs-5 text-decoration-none" %>
         <% if user_signed_in?   %>
                     <li class="nav-item">
           </li>
           <li class="nav-item dropdown ms-3">
             <%= cl_image_tag current_user.profile_picture.key, crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "View Profile", "#", class: "dropdown-item" %>
-              <b class="m-3">Students:</b>
-              <%= link_to "My exercises", "/exercises", class: "dropdown-item" %>
-              <b class="m-3">Teachers:</b>
               <%= link_to "My exercises", "/teacher/exercises", class: "dropdown-item" %>
-
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
