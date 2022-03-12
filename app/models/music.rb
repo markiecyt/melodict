@@ -34,7 +34,9 @@ class Music < ApplicationRecord
     musics =
       Music.where(
         created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day,
-        user: user
+        user: user,
+        is_question: false,
+        status: 1
       )
     stat = (musics.count / DAILY_TARGET.to_f) * 100
     stat > 100 ? 100 : stat
@@ -44,7 +46,9 @@ class Music < ApplicationRecord
     musics =
       Music.where(
         created_at: Time.zone.now.beginning_of_week..Time.zone.now.end_of_week,
-        user: user
+        user: user,
+        is_question: false,
+        status: 1
       )
     stat = (musics.count / WEEKLY_TARGET.to_f) * 100
     stat > 100 ? 100 : stat

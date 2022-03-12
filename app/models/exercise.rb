@@ -65,7 +65,7 @@ class Exercise < ApplicationRecord
     grouped =
       Exercise
       .includes(:musics)
-      .where(user: user, musics: { is_question: false })
+      .where(musics: { is_question: false, user: user, status: 1 })
       .group_by { |ex| ex.difficulty_string.capitalize }
     grouped.map { |k, v| { k => v.count } }.reduce(:merge)
   end
